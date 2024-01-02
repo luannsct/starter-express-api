@@ -1,0 +1,158 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API para gestão de dispensas e receitas",
+        "description": "Essa api tem como finalidade gerir receitas e despesas de um usuario",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "luan.nsct@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Api de Teste"
+        }
+    ],
+    "paths": {
+        "/sign": {
+            "post": {
+                "summary": "Cadastrar Usuário",
+                "description": "Essa rota será responsável por cadastrar um novo usuario",
+                "tags": [
+                    "usuario"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "nome": "Kirby Schmidt",
+                                        "email": "duis@protonmail.net",
+                                        "senha": "SIU35AMU8MB"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "<b>Bad Request</b> - Algum campo não foi informado. Todos os campos são obrigatórios"
+                    },
+                    "422": {
+                        "description": "<b>Unprocessable Entity</b> - O email informado já está cadastrado."
+                    },
+                    "200": {
+                        "description": "<b>Success</b> - Novo usuario cadastrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Usuario"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "Essa rota será responsável por logar um usuario",
+                "summary": "Login",
+                "tags": [
+                    "usuario"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            },
+                            "examples": {
+                                "login": {
+                                    "value": {
+                                        "email": "duis@protonmail.net",
+                                        "senha": "SIU35AMU8MB"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "<b>Success</b> - Login realizado com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Login"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "<b>Not Found</b> - Usuário não encontrado"
+                    },
+                    "401": {
+                        "description": "<b>Unauthorized</b> - Email ou senhas inválidos ou não informados"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Usuario": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "value": "2"
+                    },
+                    "nome": {
+                        "type": "string",
+                        "value": "Kirby Schmidt"
+                    },
+                    "email": {
+                        "type": "string",
+                        "value": "duis@protonmail.net"
+                    }
+                }
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

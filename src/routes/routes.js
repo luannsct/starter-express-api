@@ -10,7 +10,7 @@ routes.use(cors())
 routes.post('/sign', validarCorpoRequisicaoCadastro(usuarioSchemaCadastro), validarCadastro, cadastrarNovoUsuario)
 routes.post('/login', validarCorpoRequisicaoLogin(usuaroSchemaLogin), validarLoginUsuario, logarUsuario)
 
-routes.get('/', (req, res) => {
+routes.all('/', (req, res) => {
     res.send('Olá Mundo!')
 })
 

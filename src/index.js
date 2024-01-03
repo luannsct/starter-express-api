@@ -12,4 +12,4 @@ app.all('/', (req, res) => {
     res.send('Tudo funcionando')
 })
 
-app.listen(door, () => { console.log(`Server criado na porta ${door} acesse em http://localhost:${door}`) })
+app.listen(process.env.PORT || door, () => { console.log(`Server criado na porta ${door} acesse em http://localhost:${door}`) })

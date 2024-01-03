@@ -6,7 +6,7 @@ const { routes } = require('./routes/routes')
 const app = express()
 const door = 3000
 app.use(express.json())
-app.use("/dev", routes)
+app.use("/v1", routes)
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 app.all('/', (req, res) => {
     res.send('Tudo funcionando')

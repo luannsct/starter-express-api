@@ -11,8 +11,12 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000",
+            "url": "http://localhost:3000/v1",
             "description": "Api de Teste"
+        },
+        {
+            "url": "https://api-deploy.cyclic.app/v1",
+            "description": "Deploy API"
         }
     ],
     "paths": {

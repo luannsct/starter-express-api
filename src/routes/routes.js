@@ -5,7 +5,7 @@ const { usuaroSchemaLogin } = require('../schemas/usuarios')
 const routes = express()
 
 
-routes.get('/', (req, res) => {
+routes.all('/', (req, res) => {
     return res.json(`Olá Mundo!`)
 })
 routes.post('/sign', validarCadastro, cadastrarNovoUsuario)

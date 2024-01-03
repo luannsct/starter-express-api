@@ -12,7 +12,7 @@ const usuaroSchemaLogin = joi.object({
     })
 })
 const usuarioSchemaCadastro = joi.object({
-    nome: joi.string().alphanum().min(3).max(50).required().messages({
+    nome: joi.string().min(3).max(50).required().messages({
         "string.base": "O nome informado não é válido",
         "string.min": "Oops... Pelo menos 3 caracteres no nome",
         "string.max": "Aí não amigão, diminui esse nome.",

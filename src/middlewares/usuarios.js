@@ -9,11 +9,8 @@ const {
 } = require("../utils/mensagemPadrao");
 
 const validarCadastro = async (req, res, next) => {
-    const { nome, email, senha } = req.body;
+    const { email } = req.body;
     try {
-        if (!nome || !email || !senha) {
-            return res.status(400).json(camposObrigatorios);
-        }
         const resultado = await knex.select('*').from('usuarios').where('email', email)
         if (resultado.length > 0) {
             return res.status(422).json(emailJahExiste)
@@ -27,14 +24,19 @@ const validarCorpoRequisicaoLogin = (esquema) => {
     return async (req, res, next) => {
         try {
             await esquema.validateAsync(req.body)
-            req.usuario = {
-                id: 1,
-                nome: 'Luan',
-                email: 'luan.nsct@gmail.com'
-            }
             next()
         } catch (error) {
             return res.status(400).json({ erro: error.message })
+        }
+    }
+}
+const validarCorpoRequisicaoCadastro = (esquema) => {
+    return async (req, res, next) => {
+        try {
+            await esquema.validateAsync(req.body)
+            next()
+        } catch (error) {
+            return res.status(400).json({ error: error.message })
         }
     }
 }
@@ -60,4 +62,4 @@ const validarLoginUsuario = async (req, res, next) => {
 }
 
 
-module.exports = { validarLoginUsuario, validarCadastro, validarCorpoRequisicaoLogin }
+module.exports = { validarLoginUsuario, validarCadastro, validarCorpoRequisicaoLogin, validarCorpoRequisicaoCadastro }

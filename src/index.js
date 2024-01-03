@@ -10,4 +10,4 @@ app.use("/v1", routes)
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
 
-app.listen(process.env.PORT || door, () => { console.log(`Server criado na porta ${door} acesse em http://localhost:${door}`) })
+app.listen(process.env.PORT || door)

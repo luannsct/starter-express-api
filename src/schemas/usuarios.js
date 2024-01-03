@@ -19,7 +19,7 @@ const usuarioSchemaCadastro = joi.object({
         "any.required": "Por favor informe o nome!"
     }),
     email: joi.string().email().max(100).required().messages({
-        "string.base": "O email não é válido!",
+        "string.email": "O email não é válido!",
         "string.max": "O e-mail deve ter no máximo 100 caracteres",
         'string.required': "O e-mail é obrigatório!"
     }),

@@ -23,7 +23,6 @@ const validarCadastro = async (req, res, next) => {
         return res.status(500).json(erro500)
     }
 }
-
 const validarCorpoRequisicaoLogin = (esquema) => {
     return async (req, res, next) => {
         try {
@@ -37,7 +36,6 @@ const validarCorpoRequisicaoLogin = (esquema) => {
         } catch (error) {
             return res.status(400).json({ erro: error.message })
         }
-
     }
 }
 
@@ -45,7 +43,6 @@ const validarLoginUsuario = async (req, res, next) => {
     const { email, senha } = req.body;
     try {
         const resultado = await knex.select('*').from('usuarios').where('email', email)
-
         if (resultado.length === 0) {
             return res.status(404).json(usuarioNaoEncontrado);
         }
@@ -56,7 +53,6 @@ const validarLoginUsuario = async (req, res, next) => {
         const { senha: _, ...usuario } = resultado[0];
         req.usuario = usuario;
         next();
-
     } catch (error) {
         return res.status(500).json({ erro500 })
     }

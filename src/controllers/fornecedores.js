@@ -1,5 +1,6 @@
 const knex = require("../config/db/knex");
 const novaProposta = async (req, res) => {
+
     try {
         const inserirDados = await knex('price').insert({ id_fornecedor, nomecliente, emailcliente, consumokwhmensal }).returning('*');
         if (inserirDados.length <= 0) {
@@ -19,5 +20,15 @@ const listarPropostasPorEmail = async (req, res) => {
         return res.status(500).json({ message: "Oops...." })
     }
 }
+const buscarFornecedorEnergia = async (req, res) => {
+    /*
+    {
+  "nomecliente": "brain",
+  "emailcliente": "brain@gmail.com",
+  "consumokwhmensal": "123456"
+}
+    */
+    const { nomecliente, emailcliente, consumokwhmensal } = req.body;
 
+}
 module.exports = { listarPropostasPorEmail }

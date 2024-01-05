@@ -7,7 +7,7 @@ const { listarPropostasPorEmail } = require('../controllers/fornecedores')
 const routes = express()
 
 routes.use(cors())
-routes.get('/', listarPropostasPorEmail)
+// routes.get('/', listarPropostasPorEmail)
 routes.post('/sign', validarCorpoRequisicaoCadastro(usuarioSchemaCadastro), validarCadastro, cadastrarNovoUsuario)
 routes.post('/login', validarCorpoRequisicaoLogin(usuaroSchemaLogin), validarLoginUsuario, logarUsuario)
 

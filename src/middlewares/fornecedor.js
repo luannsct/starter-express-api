@@ -9,11 +9,6 @@ const validarCorpoRequisicaoNovaCotacao = (esquema) => {
     }
 }
 
-const validarBuscaFornecedor = (req, res) => {
-    const { nomecliente, emailcliente, consumokwhmensal } = req.body;
-    if (!nomecliente) {
-        return res.status(400).json({ message: "Oops... Informe o nome da empresa" })
-    }
-}
+
 
 module.exports = { validarCorpoRequisicaoNovaCotacao }

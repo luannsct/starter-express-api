@@ -21,14 +21,8 @@ const listarPropostasPorEmail = async (req, res) => {
     }
 }
 const buscarFornecedorEnergia = async (req, res) => {
-    /*
-    {
-  "nomecliente": "brain",
-  "emailcliente": "brain@gmail.com",
-  "consumokwhmensal": "123456"
-}
-    */
     const { nomecliente, emailcliente, consumokwhmensal } = req.body;
+    console.log(typeof (consumokwhmensal))
 
 }
-module.exports = { listarPropostasPorEmail }
+module.exports = { listarPropostasPorEmail, buscarFornecedorEnergia }

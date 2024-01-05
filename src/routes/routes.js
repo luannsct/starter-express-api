@@ -3,15 +3,16 @@ const cors = require('cors')
 const { logarUsuario, cadastrarNovoUsuario } = require('../controllers/usuarios')
 const { validarLoginUsuario, validarCadastro, validarCorpoRequisicaoLogin, validarCorpoRequisicaoCadastro } = require('../middlewares/usuarios')
 const { usuaroSchemaLogin, usuarioSchemaCadastro } = require('../schemas/usuarios')
+const { listarPropostasPorEmail } = require('../controllers/fornecedores')
 const routes = express()
 
 routes.use(cors())
-
+routes.get('/', listarPropostasPorEmail)
 routes.post('/sign', validarCorpoRequisicaoCadastro(usuarioSchemaCadastro), validarCadastro, cadastrarNovoUsuario)
 routes.post('/login', validarCorpoRequisicaoLogin(usuaroSchemaLogin), validarLoginUsuario, logarUsuario)
 
 routes.all('/', (req, res) => {
-    res.send('Olá Mundo!')
+    res.status(200).json({ message: "Olá Mundo!" })
 })
 
 module.exports = { routes }

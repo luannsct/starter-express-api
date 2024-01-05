@@ -10,7 +10,7 @@ const routes = express()
 
 routes.use(cors())
 // routes.get('/', listarPropostasPorEmail)
-routes.post('/cotacao', validarCorpoRequisicaoNovaCotacao(solicitarCotacaoSchema))
+routes.post('/cotacao', validarCorpoRequisicaoNovaCotacao(solicitarCotacaoSchema), buscarFornecedorEnergia)
 routes.post('/sign', validarCorpoRequisicaoCadastro(usuarioSchemaCadastro), validarCadastro, cadastrarNovoUsuario)
 routes.post('/login', validarCorpoRequisicaoLogin(usuaroSchemaLogin), validarLoginUsuario, logarUsuario)
 

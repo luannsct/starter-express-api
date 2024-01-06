@@ -1,9 +1,7 @@
 # starter-express-api
+API DESENVOLVIDA PARA RESOLVER O DESAFIO TECNICO DA CLARKE ENERGIA
+BACKEND EM EXPRESSJS
 
-This is the simplest possible nodejs api using express that responds to any request with: 
-```
-Yo!
-```
 
 ### Deploy it in 7 seconds: 
 

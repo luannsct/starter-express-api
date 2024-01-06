@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { usuaroSchemaLogin, usuarioSchemaCadastro } = require('../schemas/usuarios')
-const { listarPropostasPorEmail, buscarFornecedorEnergia } = require('../controllers/fornecedores')
+const { buscarFornecedorEnergia, novaProposta } = require('../controllers/fornecedores')
 const { validarCorpoRequisicaoNovaCotacao } = require('../middlewares/fornecedor')
 const { solicitarCotacaoSchema } = require('../schemas/cliente')
 const routes = express()

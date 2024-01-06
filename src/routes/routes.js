@@ -3,13 +3,13 @@ const cors = require('cors')
 const { logarUsuario, cadastrarNovoUsuario } = require('../controllers/usuarios')
 const { validarLoginUsuario, validarCadastro, validarCorpoRequisicaoLogin, validarCorpoRequisicaoCadastro } = require('../middlewares/usuarios')
 const { usuaroSchemaLogin, usuarioSchemaCadastro } = require('../schemas/usuarios')
-const { listarPropostasPorEmail, buscarFornecedorEnergia, novaProposta } = require('../controllers/fornecedores')
+const { listarPropostasPorEmail, buscarFornecedorEnergia } = require('../controllers/fornecedores')
 const { validarCorpoRequisicaoNovaCotacao } = require('../middlewares/fornecedor')
 const { solicitarCotacaoSchema } = require('../schemas/cliente')
 const routes = express()
 
 routes.use(cors())
-// routes.get('/', listarPropostasPorEmail)
+
 routes.post('/cotacao', validarCorpoRequisicaoNovaCotacao(solicitarCotacaoSchema), buscarFornecedorEnergia)
 routes.post('/novacotacao', novaProposta)
 

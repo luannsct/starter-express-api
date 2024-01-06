@@ -24,7 +24,6 @@ const buscarFornecedorEnergia = async (req, res) => {
     const { consumokwhmensal } = req.body;
     const consumokwhmensalFloat = parseFloat(consumokwhmensal)
     try {
-        //where khwminimo >= 200 and avaliacaomedia > 3 order by custokwh  desc LIMIT(5)
         const resultado = await knex('supplier').where('khwminimo', '<=', consumokwhmensalFloat).orderBy('avaliacaomedia', 'desc').limit(6)
         if (resultado <= 0) {
             return res.status(404).json({ erro: "Não encontramos nenhum fornecedor que possa atendê-lo no momento." })

@@ -1,7 +1,6 @@
 const { knexDeploy: knex } = require("../config/db/knex");
 const novaProposta = async (req, res) => {
     const { id_fornecedor, nomecliente, emailcliente, consumokwhmensal } = req.body
-    console.log(req)
     try {
         const inserirDados = await knex('price').insert({ id_fornecedor, nomecliente, emailcliente, consumokwhmensal }).returning('*');
         if (inserirDados.length <= 0) {
